@@ -1,8 +1,15 @@
 .routes {
   font-size: 50px;
-  display: block;
+  height:800px;
 }
 .lines,.time,.eta {
   font-size: 35px;
-  display: inline-block;
+  float:left;
+  width: 33%;
+}
+.destination {
+}
+#start, #end{
+  width: 20%;
+  height: 30px;
 }
