@@ -1,0 +1,15 @@
+.routes {
+  font-size: 50px;
+  height:800px;
+}
+.lines,.time,.eta {
+  font-size: 35px;
+  float:left;
+  width: 33%;
+}
+.destination {
+}
+#start, #end{
+  width: 20%;
+  height: 30px;
+}
