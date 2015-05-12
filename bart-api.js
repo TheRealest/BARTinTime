@@ -21,7 +21,6 @@ var getStationList = function(cb) {
 var processStationList = function(rawXml) {
   var $xml = $(rawXml);
   var stations = $xml.find('station');
-  var properties = ['name','abbr'];
   stations = stations.map(function(i,elem) {
     var obj = {}, $elem = $(elem);
     obj.name = $elem.find('name').text();
@@ -39,7 +38,6 @@ var getTimeList = function(station, direction, cb) {
 var processTimeList = function(rawXml) {
   var $xml = $(rawXml);
   var times = $xml.find('etd');
-  var properties = ['destination','abbreviation','estimate'];
   times = times.map(function(i,elem) {
     var obj = {}, $elem = $(elem);
     obj.line = $elem.find('destination').text();
@@ -52,7 +50,7 @@ var processTimeList = function(rawXml) {
         estObj[$child.prop('tagName')] = $child.text();
       });
       return estObj;
-    });
+    }).get();
     return obj;
   }).get();
   return times;
