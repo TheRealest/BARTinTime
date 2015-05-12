@@ -7,3 +7,4 @@ function updateBadge(time) {
     color: "#287C9E";
   });
 }
+
