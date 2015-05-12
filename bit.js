@@ -4,6 +4,6 @@ function updateBadge(time) {
     text: time.toString()
   });
   chrome.browserAction.setBadgeBackgroundColor({
-    color: "#287C9E";
+    color: "#287C9E"
   });
 }

@@ -1,6 +1,7 @@
 .routes {
   font-size: 50px;
   height:800px;
+  width:800px;
 }
 .lines,.time,.eta {
   font-size: 35px;
