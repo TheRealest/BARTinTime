@@ -23,12 +23,49 @@ var processStationList = function(rawXml) {
   var stations = $xml.find('station');
   var properties = ['name','abbr'];
   stations = stations.map(function(i,elem) {
-    var obj = {};
-    properties.forEach(function(prop) {
-      obj[prop] = $(elem).find(prop).text();
-    });
+    var obj = {}, $elem = $(elem);
+    obj.name = $elem.find('name').text();
+    obj.abbr = $elem.find('abbr').text();
     return obj;
   }).get();
   return stations;
 };
 
+var getTimeList = function(station, direction, cb) {
+  var endpoint = bartApi.get.times;
+  $.get(endpoint.link(),endpoint.data(station,direction)).done(cb);
+};
+
+var processTimeList = function(rawXml) {
+  var $xml = $(rawXml);
+  var times = $xml.find('etd');
+  var properties = ['destination','abbreviation','estimate'];
+  times = times.map(function(i,elem) {
+    var obj = {}, $elem = $(elem);
+    obj.line = $elem.find('destination').text();
+    obj.abbr = $elem.find('abbreviation').text();
+    obj.etd = $elem.find('estimate').map(function(i,est){
+      var $est = $(est), estObj = {};
+      $est.children().each(function(i,child){
+        var $child = $(child);
+        if ($child.prop('tagName') === 'length') return;
+        estObj[$child.prop('tagName')] = $child.text();
+      });
+      return estObj;
+    });
+    return obj;
+  }).get();
+  return times;
+};
+
+var withStations = function(cb) {
+  getStationList(function(data) {
+    cb(processStationList(data));
+  });
+};
+
+var withTimes = function(station, direction, cb) {
+  getTimeList(station, direction, function(data) {
+    cb(processTimeList(data));
+  });
+};
