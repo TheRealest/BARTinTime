@@ -1,9 +1,12 @@
+/* limit the height of everything by the height of the body, html
+so you don't have a scroll bar; maybe make the width and height adjusted based on how many routes you list*/
 .routes {
   font-size: 50px;
   height:800px;
   width:800px;
 }
-.lines,.time,.eta {
+
+.lines, .time, .eta {
   font-size: 35px;
   float:left;
   width: 33%;
@@ -13,4 +16,8 @@
 #start, #end{
   width: 20%;
   height: 30px;
+}
+body, html {
+  width: 500px;
+  height: 500px;
 }
