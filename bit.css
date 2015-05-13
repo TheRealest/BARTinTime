@@ -2,9 +2,11 @@
 so you don't have a scroll bar; maybe make the width and height adjusted based on how many routes you list*/
 .routes {
   font-size: 50px;
-  height: 500px;
+  height:800px;
+  width:800px;
 }
-.lines,.time,.eta {
+
+.lines, .time, .eta {
   font-size: 35px;
   float:left;
   width: 33%;
